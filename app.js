@@ -26,9 +26,15 @@ btn.addEventListener("click", (e) => {
   answerCtn.appendChild(fragment);
 });
 
+function supTildes(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 function palindrome(str) {
+  str = supTildes(str);
   const regex = /[^a-zA-Z0-9]/;
   let newStr = str.split(regex).join("").toLowerCase();
+  console.log(newStr);
   let reverseStr = newStr.split("").reverse().join("").toLowerCase();
 
   return reverseStr == newStr;
