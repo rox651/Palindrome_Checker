@@ -1,0 +1,111 @@
+*, ::after, ::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --principalColor : blueviolet;
+    --family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--principalColor);
+    font-family: var(--family);
+    display: grid;
+    place-items: center;
+
+}
+
+.checker{
+    overflow: hidden;
+    max-width: 400px;
+    height: max-content;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.515);
+    margin: 5px;
+    padding: 15px 20px;
+}
+
+
+.checker__text h1{
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.checker__form{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, #btnChecker{
+    font-family: var(--family);
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    
+}
+
+input[type="text"]{
+    border: 1px solid rgba(0, 0, 0, 0.342);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.209);
+    outline: none;
+}
+
+input[type="text"]::placeholder{
+    font-family: var(--family);
+    letter-spacing: 1px;
+}
+
+#btnChecker{
+    position: relative;
+    z-index: 10;
+    background-color: var(--principalColor);
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+  
+    transition: .3s;
+}
+
+#btnChecker:hover{
+    background-color: rgb(152, 86, 214);
+    transform: translate(-5px,5px);
+}
+
+#btnChecker:disabled{
+    background-color: rgb(173, 104, 185);
+}
+
+.answer{
+    text-align: center;
+    letter-spacing: 1px;
+    animation: move .6s ease;
+}
+
+.answer strong{
+    color: var(--principalColor);
+}
+
+@keyframes move {
+    0%{
+        transform: rotate(0deg);
+    }
+    20%{
+        transform: rotate(13deg);
+    }
+    50%{
+        transform: rotate(-13deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
