@@ -6,7 +6,7 @@ answer.classList.add("answer");
 const fragment = document.createDocumentFragment();
 
 word.addEventListener("keyup", () => {
-  if (word.value) {
+  if (word.value && word.value.trim()) {
     btn.removeAttribute("disabled");
   } else {
     btn.setAttribute("disabled", "disabled");
@@ -16,11 +16,11 @@ word.addEventListener("keyup", () => {
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
-  const isPalindrome = palindrome(word.value);
+  const [isPalindrome, newStr] = palindrome(word.value);
 
   isPalindrome
-    ? (answer.innerHTML = `Yes, <strong>'${word.value}'</strong> is a palindrome!`)
-    : (answer.innerHTML = `No, <strong>'${word.value}'</strong> is not a palindrome`);
+    ? (answer.innerHTML = `Yes, <strong>'${newStr}'</strong> is a palindrome!`)
+    : (answer.innerHTML = `No, <strong>'${newStr}'</strong> is not a palindrome`);
 
   fragment.appendChild(answer);
   answerCtn.appendChild(fragment);
@@ -33,9 +33,9 @@ function supTildes(str) {
 function palindrome(str) {
   str = supTildes(str);
   const regex = /[^a-zA-Z0-9]/;
+
   let newStr = str.split(regex).join("").toLowerCase();
-  console.log(newStr);
   let reverseStr = newStr.split("").reverse().join("").toLowerCase();
 
-  return reverseStr == newStr;
+  return [reverseStr == newStr, newStr];
 }
